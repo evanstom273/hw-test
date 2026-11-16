@@ -36,6 +36,7 @@ History #1–#3 were decided in conversation a few minutes before this document 
 
 ### Documentation
 - **Living `GAME_DESIGN.md`**, using the format of Lyra's previous project's design document, filled in with everything decided and done as the project goes. *(2026-11-16T05:12:50+00:00 — History #4)*
+- **`CLAUDE.md`** points every Claude session at this document and its standing orders, so they carry over between conversations. *(2026-11-16T05:22:32+00:00 — History #8)*
 
 ---
 
@@ -88,6 +89,7 @@ Lyra's request: scaffold the project, blank for now, a "coming soon" page with a
 - **The page's look is a placeholder:** near-black background, white heavy heading with a red full stop; favicon a red dot on black. Not an art direction.
 - **Page title** is "Coming soon" until the game has a name.
 - **Worker name `hw-test`**, matching the repository (the Cloudflare dashboard's default when importing it).
+- **Answering a feature's design rounds counts as the go-ahead to build it** (#8), so "explain before adding" is met by the one line on what's being added, as in the mod project. If a round is only exploring an idea, nothing gets built.
 - **Node 22** pinned in `.node-version` (Vite 8 needs 20.19+ or 22.12+), so Cloudflare's builds use a version that works.
 - The guiding principles in §A and the "explain before adding" standing order in §H were carried over from Lyra's previous design document rather than restated for this project. (The merge-to-`main` order has since been confirmed, #5.)
 
@@ -106,6 +108,7 @@ Lyra's request: scaffold the project, blank for now, a "coming soon" page with a
 | 5 | 2026-11-16T05:13:42+00:00 | Workflow | Merge to `main` after every commit to the working branch, without asking (Lyra's standing order, confirmed for this project). |
 | 6 | 2026-11-16T05:14:53+00:00 | Deployment | Deployed to the web on Cloudflare Workers. |
 | 7 | 2026-11-16T05:14:53+00:00 | Technical | Physics: Planck.js, with Phaser handling rendering, camera, input and particles (Claude's recommendation, approved). |
+| 8 | 2026-11-16T05:22:32+00:00 | Process | Features are designed through rounds of multiple-choice questions, structured the way Lyra's Minecraft mod project does it (details in §H). `CLAUDE.md` added so every session reads this document and follows it. |
 
 ---
 
@@ -116,4 +119,13 @@ Lyra's request: scaffold the project, blank for now, a "coming soon" page with a
 - **Code layout:** `index.html` page shell; `src/main.tsx` entry; `src/App.tsx` the coming-soon page; `src/index.css` Tailwind; `public/favicon.svg`.
 - **Commands:** `npm run dev`, `npm run build`, `npm run lint` (oxlint), `npm run preview`, `npm run deploy`.
 - **Explain before adding** *(carried over from Lyra's previous design document)*: before building anything, Claude says what it's about to add and how, then waits for the go-ahead.
+- **Designing features: rounds of questions** *(Lyra, 2026-11-16T05:22:32+00:00, History #8)*. Features are designed the way Lyra's Minecraft mod project designs them (and the way simple-shooter designed its enemies and bosses): Claude asks rounds of multiple-choice questions, Lyra answers and adds her own ideas.
+  - **One short line before each round** saying what it covers (e.g. "I'll start with how the spell behaves and what the wings are like to fly with.").
+  - **Up to four questions per round**, asked with the question tool. Each has two to four options; Lyra can always pick Other and write her own answer.
+  - **Every question stands on its own:** it names the feature and gives the facts needed to answer it, especially reference numbers from what already exists (e.g. "sprinting is about 5.6 blocks/sec and a vanilla Elytra cruises around 30 blocks/sec").
+  - **Fundamentals first, polish last:** how it works and how it's triggered → how it feels and its numbers → edge cases and failure states (running out, letting go, crashing) → its name → controls → look, effects, sound and UI.
+  - **Each round builds on the last.** Between rounds, one line saying what Claude has taken from the answers (e.g. "Channelled and powered it is, so I've taken mana as draining for as long as you hold."), so a wrong reading gets caught before the next round.
+  - **Names are offered as options too**, with Other for Lyra's own.
+  - **Options are Claude's suggestions, not decisions;** nothing is decided until Lyra picks it.
+  - **When the design is settled**, it goes into this document: the decisions, History entries, the options that were offered for looks, and anything Claude assumed rather than asked, marked as such. Then it's built, with one line on what's being added first (e.g. "The design is settled, so I'm building Veil of Flight. First I'll…").
 - **Workflow** *(Lyra's standing order across all her projects; confirmed for this project 2026-11-16T05:13:42+00:00, History #5)*: after committing to the working branch, always merge straight to `main` as well; no need to ask each time.
