@@ -72,7 +72,7 @@ Nothing in development yet. The repository holds only this document and the READ
 - None yet.
 
 ### Implementation interpretations (technical, not design decisions — flag if wrong)
-- The guiding principles in §A and the standing orders in §H were carried over from Lyra's previous design document rather than restated for this project.
+- The guiding principles in §A and the "explain before adding" standing order in §H were carried over from Lyra's previous design document rather than restated for this project. (The merge-to-`main` order has since been confirmed, #5.)
 
 ---
 
@@ -86,6 +86,7 @@ Nothing in development yet. The repository holds only this document and the READ
 | 2 | 2026-11-16T05:12:50+00:00 | Technical | Stack: React, Vite, TypeScript, Tailwind CSS, Phaser, IndexedDB via Dexie.js, Cloudflare Workers (Lyra's normal stack). |
 | 3 | 2026-11-16T05:12:50+00:00 | Concept | Not a recreation of Happy Wheels: an original game in the genre. |
 | 4 | 2026-11-16T05:12:50+00:00 | Documentation | Living `GAME_DESIGN.md`, using the format of Lyra's previous project's design document. |
+| 5 | 2026-11-16T05:13:42+00:00 | Workflow | Merge to `main` after every commit to the working branch, without asking (Lyra's standing order, confirmed for this project). |
 
 ---
 
@@ -93,4 +94,4 @@ Nothing in development yet. The repository holds only this document and the READ
 
 - **Repository:** `evanstom273/hw-test`. Working branch `ccr-e80cc760-iehzmg`.
 - **Explain before adding** *(carried over from Lyra's previous design document)*: before building anything, Claude says what it's about to add and how, then waits for the go-ahead.
-- **Workflow** *(Lyra's standing order across all her projects, carried over from the previous design document)*: after committing to the working branch, always merge straight to `main` as well; no need to ask each time.
+- **Workflow** *(Lyra's standing order across all her projects; confirmed for this project 2026-11-16T05:13:42+00:00, History #5)*: after committing to the working branch, always merge straight to `main` as well; no need to ask each time.
