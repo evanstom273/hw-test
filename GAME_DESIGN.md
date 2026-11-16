@@ -64,6 +64,11 @@ Lyra's request: scaffold the project, blank for now, a "coming soon" page with a
 
 1. **Title.**
 2. **Everything about the game itself.**
+2a. **Characters, starting with the first** *(paused 2026-11-16, kept for later at Lyra's request)*. Lyra's idea for the first: **a guy on a pogo stick** ("or something"). His own character, not Happy Wheels' pogo character. The first round of design questions was asked but not answered; it's the place to pick back up:
+   - **Bouncing:** bounces on its own / hold to charge / pump for height / one press, one hop.
+   - **Balance:** fully physical / assisted / self-righting.
+   - **Holding on:** each grip breaks on its own / all or nothing / never comes off.
+   - **Letting go:** eject button / eject, then grab it back / only when knocked off.
 3. ~~**Physics engine.**~~ Planck.js (#7). Claude's reasoning when recommending it: Arcade physics is boxes only; Matter.js has springy joints, no proper joint limits, and no release since mid-2024; Box2D-style joints (revolute with limits and motors, wheel joints with suspension, readable joint forces) are what this genre is built on. box2d3-wasm is the faster alternative if needed.
 4. **What each part of the stack handles.** ~~Where the game is deployed~~ (Cloudflare Workers, #6); ~~physics~~ (Planck.js, #7). Still open: what React, Dexie and anything server-side handle.
 
