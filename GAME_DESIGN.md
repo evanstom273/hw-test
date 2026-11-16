@@ -13,7 +13,7 @@ History #1–#3 were decided in conversation a few minutes before this document 
 **Where the project stands (as of 2026-11-16T05:12:50+00:00):**
 - Living design document created (History #4). Nothing built yet.
 
-**Stack:** React, Vite, TypeScript, Tailwind CSS, Phaser, IndexedDB via Dexie.js and Cloudflare Workers: Lyra's normal stack (History #2). What each part handles is not decided yet.
+**Stack:** React, Vite, TypeScript, Tailwind CSS, Phaser, IndexedDB via Dexie.js and Cloudflare Workers: Lyra's normal stack (History #2), plus **Planck.js for physics**, with Phaser handling rendering, camera, input and particles (History #7). **Deployed to the web on Cloudflare Workers** (History #6). What the other parts handle is not decided yet.
 
 **Guiding principles** *(carried over from Lyra's previous project's design document; flag if any don't apply here)*:
 - Discuss → Decide → Document → Implement → Test → Expand.
@@ -30,6 +30,8 @@ History #1–#3 were decided in conversation a few minutes before this document 
 
 ### Technical architecture / platform
 - **Stack: React, Vite, TypeScript, Tailwind CSS, Phaser, IndexedDB via Dexie.js, Cloudflare Workers.** *(2026-11-16T05:12:50+00:00 — History #2)*
+- **Deployed on Cloudflare Workers**: that's where the game goes out to the web. *(2026-11-16T05:14:53+00:00 — History #6)*
+- **Physics: Planck.js** (a TypeScript port of Box2D), driving the physics, with Phaser handling rendering, camera, input and particles and syncing each sprite to its physics body. Claude's recommendation, approved by Lyra; reasoning under Open Questions #3. *(2026-11-16T05:14:53+00:00 — History #7)*
 
 ### Documentation
 - **Living `GAME_DESIGN.md`**, using the format of Lyra's previous project's design document, filled in with everything decided and done as the project goes. *(2026-11-16T05:12:50+00:00 — History #4)*
@@ -55,8 +57,8 @@ Nothing in development yet. The repository holds only this document and the READ
 
 1. **Title.**
 2. **Everything about the game itself.**
-3. **Physics engine.** Claude recommended **Planck.js** (a TypeScript port of Box2D) driving the physics, with Phaser handling rendering, camera, input and particles. Reasoning: Arcade physics is boxes only; Matter.js has springy joints, no proper joint limits, and no release since mid-2024; Box2D-style joints (revolute with limits and motors, wheel joints with suspension, readable joint forces) are what this genre is built on. box2d3-wasm is the faster alternative if needed. Not decided.
-4. **What each part of the stack handles**, including what Cloudflare Workers is for, and where the game is deployed.
+3. ~~**Physics engine.**~~ Planck.js (#7). Claude's reasoning when recommending it: Arcade physics is boxes only; Matter.js has springy joints, no proper joint limits, and no release since mid-2024; Box2D-style joints (revolute with limits and motors, wheel joints with suspension, readable joint forces) are what this genre is built on. box2d3-wasm is the faster alternative if needed.
+4. **What each part of the stack handles.** ~~Where the game is deployed~~ (Cloudflare Workers, #6); ~~physics~~ (Planck.js, #7). Still open: what React, Dexie and anything server-side handle.
 
 ---
 
@@ -87,6 +89,8 @@ Nothing in development yet. The repository holds only this document and the READ
 | 3 | 2026-11-16T05:12:50+00:00 | Concept | Not a recreation of Happy Wheels: an original game in the genre. |
 | 4 | 2026-11-16T05:12:50+00:00 | Documentation | Living `GAME_DESIGN.md`, using the format of Lyra's previous project's design document. |
 | 5 | 2026-11-16T05:13:42+00:00 | Workflow | Merge to `main` after every commit to the working branch, without asking (Lyra's standing order, confirmed for this project). |
+| 6 | 2026-11-16T05:14:53+00:00 | Deployment | Deployed to the web on Cloudflare Workers. |
+| 7 | 2026-11-16T05:14:53+00:00 | Technical | Physics: Planck.js, with Phaser handling rendering, camera, input and particles (Claude's recommendation, approved). |
 
 ---
 
